@@ -1,0 +1,25 @@
+[package]
+name = "elevenx-streamer"
+version = "0.1.0"
+edition = "2021"
+authors = ["ElevenX Team"]
+description = "Ultra-low latency audio streaming microservice for ElevenX"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+axum = "0.7"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+bytes = "1"
+# audiopus = "0.2"          # enable when building with Opus
+# memmap2 = "0.9"           # for shared-memory ring buffer
+# crossbeam = "0.8"         # alternative lock-free structures
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"

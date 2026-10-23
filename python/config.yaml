@@ -1,0 +1,28 @@
+system:
+  sample_rate: 24000
+  device: "cuda"  # or "cpu"
+  codec_path: "./harmonia/checkpoints"
+  use_codec: false  # Bypass until trained
+  streaming_chunk_size: 1024
+  use_tensorrt: false
+
+tts:
+  model_name: "tts_models/multilingual/multi-dataset/xtts_v2"
+  language: "en"
+  emotion_prompts:
+    confidence: "[CONFIDENT]"
+    empathy: "[EMPATHETIC]"
+    authority: "[AUTHORITATIVE]"
+    aggression: "[AGGRESSIVE]"
+    neutral: ""
+
+spatial:
+  room_dim: [5.0, 3.0, 3.0]
+  mic_position: [1.05, 1.74, 1.81]
+  source_position: [3.75, 2.13, 1.41]
+  hrtf_file: "mit_kemar_normal_pinna.sofa"
+  buffer_size: 256  # target for <10ms
+
+bridge:
+  shared_memory_path: "/tmp/elevenx_pcm_ring"
+  ring_buffer_size: 65536
